@@ -28,7 +28,7 @@ function extendafriend_init() {
 	
 	elgg_register_plugin_hook_handler('register', 'menu:user_hover', 'extendafriend_hover_menu', 1000);
 	
-	register_page_handler('extendafriend','extendafriend_page_handler');
+	//register_page_handler('extendafriend','extendafriend_page_handler');
 }
 
 function extendafriend_page_handler($page){

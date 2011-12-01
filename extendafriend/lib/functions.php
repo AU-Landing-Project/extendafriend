@@ -29,39 +29,36 @@ function extendafriend_hover_menu($hook, $type, $return, $params) {
 	global $CONFIG;
 	$user = $params['entity'];
 	
+	// but first we need to set some variables to build our form later in the page generation
+	if($user->isFriend()){
+		// set the link text
+		$linktext = elgg_echo('extendafriend:edit:friend');
+		$itemid = 'editfriend';
+	}
+	else{
+		$linktext = elgg_echo('friend:add');
+		$itemid = 'addfriend';
+	}
+				
+	// replace the existing "add friend" link
+	$url = $CONFIG->url . "mod/extendafriend/pages/form.php?friend=$user->username";
+	$item = new ElggMenuItem($itemid, $linktext, $url);
+	$item->setSection('action');
+	$item->setLinkClass('elgg-lightbox');
+	
 	// see if there is an "addfriend" link
 	if(is_array($return) && count($return) > 0){
 		for($i=0; $i<count($return); $i++){
-			if($return[$i]->getName() == "addfriend"){
-							
+			if(strpos($return[$i]->getHref(), "action/friends/add")){			
 				// there is an addfriend link, so we want to modify it
-				// but first we need to set some variables to build our form later in the page generation
-				if($user->isFriend()){
-					// set the link text
-					$linktext = elgg_echo('extendafriend:edit:friend');
-					$itemid = 'editfriend';
-				}
-				else{
-					$linktext = elgg_echo('friend:add');
-					$itemid = 'addfriend';
-				}
-				
-				// replace the existing "add friend" link
-				$url = $CONFIG->url . "extendafriend/$user->guid";
-				$item = new ElggMenuItem($itemid, $linktext, $url);
-				$item->setSection('action');
-				$item->setLinkClass('elgg-lightbox');
-
-				// if already a friend, then the addfriend is actually the remove friend link
-				// so we want to leave it alone and add our "edit friend" seperately
-				if(!$user->isFriend()){
-					$return[$i] = $item;
-				}
-				else{
-					$return[] = $item;
-				}
+				$return[$i] = $item;
 			}
-		}	
+		}
+		
+		if($user->isFriend()){
+			// we're already friends, so we'll add the edit button to the end of the array
+			$return[] = $item;
+		}
 	}
 	
 	return $return;
