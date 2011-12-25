@@ -24,18 +24,20 @@ function extendafriend_init() {
 	register_translations($CONFIG->pluginspath . "extendafriend/languages/");
 
 	//register action to add friends with collections
-	register_action("extendafriend/add", true, $CONFIG->pluginspath . "extendafriend/actions/add.php");
+	elgg_register_action("extendafriend/add", elgg_get_plugins_path() . "extendafriend/actions/add.php");
 	
 	elgg_register_plugin_hook_handler('register', 'menu:user_hover', 'extendafriend_hover_menu', 1000);
 	
-	//register_page_handler('extendafriend','extendafriend_page_handler');
+	elgg_register_page_handler('extendafriend','extendafriend_page_handler');
 }
 
 function extendafriend_page_handler($page){
-		global $CONFIG;
 		
-		set_input('friend_id', $page[0]);
-		include($CONFIG->pluginspath . "extendafriend/pages/form.php");
+  set_input('friend', $page[0]);
+  if(!include(elgg_get_plugins_path() . "extendafriend/pages/form.php")){
+    return FALSE;
+  }
+  return TRUE;
 }
 
 

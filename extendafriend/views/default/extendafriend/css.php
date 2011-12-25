@@ -13,3 +13,7 @@
 	width: 600px;
 	margin: 0 auto;
 }
+
+#extendafriend_rtags {
+	width: 500px;
+}

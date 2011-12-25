@@ -41,7 +41,8 @@ function extendafriend_hover_menu($hook, $type, $return, $params) {
 	}
 				
 	// replace the existing "add friend" link
-	$url = $CONFIG->url . "mod/extendafriend/pages/form.php?friend=$user->username";
+	$url = elgg_get_site_url() . "extendafriend/{$user->username}";
+	$url = elgg_add_action_tokens_to_url($url);
 	$item = new ElggMenuItem($itemid, $linktext, $url);
 	$item->setSection('action');
 	$item->setLinkClass('elgg-lightbox');

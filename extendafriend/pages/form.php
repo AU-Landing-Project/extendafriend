@@ -7,7 +7,7 @@ $user = get_user_by_username(get_input('friend'));
 
 	//create our form
 	$form = "<label>" . elgg_echo('extendafriend:rtags') . "</label><br>";
-	$form .= elgg_view('input/text', array('name' => 'rtags', 'id' => 'rtags', 'value' => "")) . "<br>";
+	$form .= elgg_view('input/text', array('name' => 'rtags', 'id' => 'extendafriend_rtags', 'value' => "")) . "<br>";
 	$form .= elgg_view('input/hidden', array('name' => 'friend_guid', 'value' => $user->guid));
 
 	//get array of names of all collections owned by me
