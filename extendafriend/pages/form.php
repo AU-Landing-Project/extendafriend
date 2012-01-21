@@ -12,7 +12,7 @@ $approve = get_input('approve');
 	$form .= elgg_view('input/hidden', array('name' => 'friend_guid', 'value' => $friend->guid));
 
 	//get array of names of all collections owned by me
-	$allcollections = get_user_access_collections(get_loggedin_userid());
+	$allcollections = get_user_access_collections(elgg_get_logged_in_user_guid());
 	$collections = extendafriend_sortcollectionsbyname($allcollections);
 	//get array of ids of collections this person is in
 	$friendcollections = extendafriend_get_friend_collections(elgg_get_logged_in_user_entity(), $friend);

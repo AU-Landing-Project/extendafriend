@@ -47,4 +47,4 @@ function extendafriend_page_handler($page){
 
 
 // call init
-register_elgg_event_handler('init','system','extendafriend_init');
+elgg_register_event_handler('init','system','extendafriend_init');

@@ -285,17 +285,3 @@ function extendafriend_permissions_check(){
 	
 	return NULL;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
