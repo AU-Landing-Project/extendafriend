@@ -17,7 +17,7 @@ function extendafriend_add_friend($friend){
 	}
 	if (!$errors){
 		// 	add to river
-		add_to_river('friends/river/create','friend',elgg_get_logged_in_user_guid(),$friend->guid);
+		add_to_river('river/relationship/friend/create','friend',elgg_get_logged_in_user_guid(),$friend->guid);
 		system_message(sprintf(elgg_echo("friends:add:successful"),$friend->name));
 
 
