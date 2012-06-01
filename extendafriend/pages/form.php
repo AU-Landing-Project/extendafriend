@@ -62,7 +62,7 @@ foreach($subsbig as $method => $big) {
 }
 
 // so now we have an array $subs[$method][] = $guid
-$form .= elgg_view('notifications/subscriptions/jsfuncs', $vars);
+$form .= elgg_view('notifications/subscriptions/jsfuncs', array());
 
 $form .= "<label>" . elgg_echo('extendafriend:notifications:method', array($friend->name)) . "</label>";
 
