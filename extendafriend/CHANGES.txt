@@ -2,11 +2,18 @@
 
 x.x:
 
+2.3 (06/01/2012):
+
+- Added notifications support
+- Added requirement for notifications
+
+
 2.2 (05/18/2012):
 
 - Fixed missing river creation due to invalid view parameter
 - Forced 1.8.1 in manifest
 - Changed instruction text to be more descriptive
+
 
 2.1 (01/21/2012):
 

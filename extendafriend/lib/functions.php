@@ -276,6 +276,25 @@ function extendafriend_revoke_decline($hook, $entity_type, $returnvalue, $params
 }
 
 
+/*
+ *  subscribes or unsubscribes 
+ */
+function extendafriend_notifications_update($user, $friend, $subscriptions){
+  global $NOTIFICATION_HANDLERS;
+  foreach($NOTIFICATION_HANDLERS as $method => $foo) {
+      
+    // add in chosen notifications methods
+    if($subscriptions[$method] == $friend->guid){
+      add_entity_relationship($user->guid, 'notify' . $method, $friend->guid);
+    }
+    else{
+      // remove pre-existing methods
+      remove_entity_relationship($user->guid, 'notify' . $method, $friend->guid);
+    }
+    
+  }
+}
+
 
 function extendafriend_permissions_check(){
 	$context = elgg_get_context();
