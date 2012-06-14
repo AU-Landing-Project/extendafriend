@@ -2,6 +2,11 @@
 
 x.x:
 
+2.4 (06/14/2012):
+- Fixes deprecation notice
+- No longer overwrites profile/owner_block view
+
+
 2.3 (06/01/2012):
 
 - Added notifications support
