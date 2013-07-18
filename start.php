@@ -16,10 +16,6 @@ function extendafriend_init() {
 	elgg_load_js('lightbox');
 	elgg_load_css('lightbox');
 
-
-	// Load the language file
-	register_translations(elgg_get_plugins_path() . "extendafriend/languages/");
-
 	//register action to add friends with collections
 	elgg_register_action("extendafriend/add", elgg_get_plugins_path() . "extendafriend/actions/add.php");
 
