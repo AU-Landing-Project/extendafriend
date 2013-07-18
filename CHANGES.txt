@@ -2,6 +2,9 @@
 
 x.x:
 
+2.5 ():
+- remove errant register_translations call that prevented language overrides
+
 2.4 (06/14/2012):
 - Fixes deprecation notice
 - No longer overwrites profile/owner_block view
