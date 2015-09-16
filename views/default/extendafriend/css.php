@@ -9,11 +9,11 @@
 	padding: 5px;	
 }
 
-.extendafriend_form {
-	width: 600px;
+form.extendafriend {
+	max-width: 600px;
 	margin: 0 auto;
 }
 
 #extendafriend_rtags {
-	width: 500px;
+	max-width: 500px;
 }
