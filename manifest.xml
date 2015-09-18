@@ -20,7 +20,7 @@
     <suggests>
         <type>plugin</type>
         <name>friend_request</name>
-        <version>3.0.2</version>
+        <version>4.0</version>
     </suggests>
     <requires>
         <type>priority</type>
