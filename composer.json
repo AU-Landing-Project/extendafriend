@@ -1,0 +1,19 @@
+{
+    "name": "au/extendafriend",
+    "type": "elgg-plugin",
+    "description": "Provides a better interface for managing friends on Elgg",
+    "homepage": "https://github.com/AU-Landing-Project/extendafriend",
+    "keywords": ["elgg", "plugin", "friends", "friend", "collections", "notifications", "extendafriend"],
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Matt Beckett"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/AU-Landing-Project/extendafriend/issues"
+    },
+    "require": {
+        "composer/installers": ">=1.0.8"
+    }
+}
