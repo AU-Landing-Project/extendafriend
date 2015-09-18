@@ -33,10 +33,10 @@ function user_hover_menu($hook, $type, $return, $params) {
 
 	// see if there is an "addfriend" link
 	if (is_array($return) && count($return) > 0) {
-		for ($i = 0; $i < count($return); $i++) {
-			if (strpos($return[$i]->getHref(), "action/friends/add")) {
+		foreach ($return as $key => $menu) {
+			if (strpos($menu->getHref(), "action/friends/add")) {
 				// there is an addfriend link, so we want to modify it
-				$return[$i] = $item;
+				$return[$key] = $item;
 			}
 		}
 
@@ -73,26 +73,26 @@ function permissions_check($hook, $type, $return, $params) {
  * @param type $returnvalue
  * @param type $params
  */
-function fr_revoke_decline($hook, $entity_type, $returnvalue, $params) {
+function fr_revoke_decline($hook, $type, $returnvalue, $params) {
 	$friend = get_user(get_input('guid'));
+	$user = elgg_get_logged_in_user_entity();
 
-	if ($friend instanceof ElggUser) {
-		if ($entity_type == "friend_request/decline" && check_entity_relationship($friend->guid, 'friendrequest', elgg_get_logged_in_user_guid())) {
+	if ($friend instanceof \ElggUser) {
+		if ($type == "friend_request/decline" && check_entity_relationship($friend->guid, 'friendrequest', $user->guid)) {
 			// delete their saved rtags
-			$oldaccess = elgg_set_ignore_access(TRUE);
-			$context = elgg_get_context();
-			elgg_set_context('extendafriend_permissions');
+			$ia = elgg_set_ignore_access(true);
+			elgg_push_context('extendafriend_permissions');
 
-			elgg_unset_plugin_user_setting('rtags_list_' . elgg_get_logged_in_user_guid(), $friend->guid, 'extendafriend');
-			elgg_unset_plugin_user_setting('existing_rtags_' . elgg_get_logged_in_user_guid(), $friend->guid, 'extendafriend');
+			elgg_unset_plugin_user_setting('rtags_list_' . $user->guid, $friend->guid, PLUGIN_ID);
+			elgg_unset_plugin_user_setting('existing_rtags_' . $user->guid, $friend->guid, PLUGIN_ID);
 
-			elgg_set_context($context);
-			elgg_set_ignore_access($oldaccess);
+			elgg_pop_context();
+			elgg_set_ignore_access($ia);
 		}
-		if ($entity_type == "friend_request/revoke" && check_entity_relationship(elgg_get_logged_in_user_guid(), 'friendrequest', $friend->guid)) {
+		if ($type == "friend_request/revoke" && check_entity_relationship($user->guid, 'friendrequest', $friend->guid)) {
 			// delete your saved rtags
-			elgg_unset_plugin_user_setting('rtags_list_' . $friend->guid, elgg_get_logged_in_user_guid(), 'extendafriend');
-			elgg_unset_plugin_user_setting('existing_rtags_' . $friend->guid, elgg_get_logged_in_user_guid(), 'extendafriend');
+			elgg_unset_plugin_user_setting('rtags_list_' . $friend->guid, $user->guid, PLUGIN_ID);
+			elgg_unset_plugin_user_setting('existing_rtags_' . $friend->guid, $user->guid, PLUGIN_ID);
 		}
 	}
 }
