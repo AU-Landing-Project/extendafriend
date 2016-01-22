@@ -3,7 +3,7 @@
     <name>Extendafriend</name>
     <id>extendafriend</id>
     <author>Matt Beckett (matt@mattbeckett.me)</author>
-    <version>3.0.0</version>
+    <version>4.0.0</version>
     <description>Adds a "tag" like interface to the add-friend link.  Each tag will create a collection and add that friend to it, or just add the friend to the existing collection.  Also controls per-user notifications.</description>
     <website>https://landing.athabascau.ca</website>
     <copyright>(C) Athabasca University, 2015</copyright>
@@ -12,7 +12,7 @@
     <!-- All plugins must require either elgg_version or elgg_release. -->
     <requires>
         <type>elgg_release</type>
-        <version>1.9</version>
+        <version>2.0</version>
     </requires>
     <requires>
         <type>plugin</type>

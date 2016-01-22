@@ -22,7 +22,7 @@ elgg_register_event_handler('init', 'system', __NAMESPACE__ . '\\init');
 function init() {
 
 	// Extend system CSS with our own styles
-	elgg_extend_view('css', 'extendafriend/css');
+	elgg_extend_view('css/elgg.css', 'css/extendafriend.css');
 	
 	elgg_load_js('lightbox');
 	elgg_load_css('lightbox');
